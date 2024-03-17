@@ -1,6 +1,6 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { Data } from '../data';
-import { useAppSelector } from '../hooks';
+import React, { useLayoutEffect, useState } from "react";
+import { Data } from "../data";
+import { useAppSelector } from "../hooks";
 
 interface IModalData {
   id: string;
@@ -10,8 +10,8 @@ interface IModalData {
 }
 
 const EditPostModal = ({ id, isOpen, onClose, onSubmit }: IModalData) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const post = useAppSelector((state) =>
     state.posts.find((post) => post.id === id)
@@ -27,8 +27,8 @@ const EditPostModal = ({ id, isOpen, onClose, onSubmit }: IModalData) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({ id, title, content, dateOfCreation: new Date().toDateString() });
-    setTitle('');
-    setContent('');
+    setTitle("");
+    setContent("");
     onClose();
   };
 
@@ -44,18 +44,18 @@ const EditPostModal = ({ id, isOpen, onClose, onSubmit }: IModalData) => {
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full max-w-xs p-3"
+            className="w-full max-w-xs p-3 border-2 border-gray-300 rounded-md text-gray-500"
             required
           />
           <textarea
             placeholder="Content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full max-w-xs p-3"
+            className="w-full max-w-xs p-3 border-2 border-gray-300 rounded-md text-gray-500"
             required
           ></textarea>
           <div className="flex justify-between items-center">
-            <button>Edit</button>
+            <button>Done</button>
             <button onClick={onClose}>Cancel</button>
           </div>
         </form>

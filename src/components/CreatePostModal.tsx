@@ -1,5 +1,5 @@
-import React, { useState, useId } from 'react';
-import { Data } from '../data';
+import React, { useState, useId } from "react";
+import { Data } from "../data";
 
 interface IModalData {
   isOpen: boolean;
@@ -8,15 +8,15 @@ interface IModalData {
 }
 
 const CreatePostModal = ({ isOpen, onClose, onSubmit }: IModalData) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
   const id = useId();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({ id, title, content, dateOfCreation: new Date().toDateString() });
-    setTitle('');
-    setContent('');
+    setTitle("");
+    setContent("");
     onClose();
   };
 
@@ -32,14 +32,14 @@ const CreatePostModal = ({ isOpen, onClose, onSubmit }: IModalData) => {
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full max-w-xs p-3"
+            className="w-full max-w-xs p-3 border-2 border-gray-300 rounded-md"
             required
           />
           <textarea
             placeholder="Content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full max-w-xs p-3"
+            className="w-full max-w-xs p-3 border-2 border-gray-300 rounded-md"
             required
           ></textarea>
           <div className="flex justify-between items-center">
