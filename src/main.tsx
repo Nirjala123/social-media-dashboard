@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+// index.tsx or wherever your root component is defined
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './store'; // Assuming you have your Redux store defined here
+import App from './App';
+
+ReactDOM.render(
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
-)
+  </Provider>,
+  document.getElementById('root')
+);
