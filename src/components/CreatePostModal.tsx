@@ -10,14 +10,26 @@ interface IModalData {
 const CreatePostModal = ({ isOpen, onClose, onSubmit }: IModalData) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [image, setImage] = useState("");
   const id = useId();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ id, title, content, dateOfCreation: new Date().toDateString() });
+    onSubmit({
+      id,
+      title,
+      content,
+      dateOfCreation: new Date().toDateString(),
+      image,
+    });
     setTitle("");
     setContent("");
+    setImage("");
     onClose();
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
 
   if (!isOpen) return null;
@@ -26,7 +38,7 @@ const CreatePostModal = ({ isOpen, onClose, onSubmit }: IModalData) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
       <div className="bg-white p-5 rounded-lg">
         <h2 className="text-xl font-bold mb-4">Create a New Post</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
           <input
             type="text"
             placeholder="Title"
@@ -42,6 +54,12 @@ const CreatePostModal = ({ isOpen, onClose, onSubmit }: IModalData) => {
             className="w-full max-w-xs p-3 border-2 border-gray-300 rounded-md"
             required
           ></textarea>
+          <input
+            type="file"
+            onChange={handleImageChange}
+            className="file:border-2 file:border-gray-300 file:rounded-md"
+            accept="image/*"
+          />
           <div className="flex justify-between items-center">
             <button>Create Post</button>
             <button onClick={onClose}>Cancel</button>

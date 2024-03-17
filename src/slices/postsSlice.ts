@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { data } from '../data';
+import { createSlice } from "@reduxjs/toolkit";
+import { data } from "../data";
 
 export const postSlice = createSlice({
-  name: 'posts',
+  name: "posts",
   initialState: data,
   reducers: {
     addPost: (state, action) => {
@@ -15,9 +15,13 @@ export const postSlice = createSlice({
         Object.assign(existingPost, rest);
       }
     },
+    deletePost: (state, action) => {
+      const id = action.payload;
+      return state.filter((post) => post.id !== id);
+    },
   },
 });
 
-export const { addPost, editPost } = postSlice.actions;
+export const { addPost, editPost, deletePost } = postSlice.actions;
 
 export default postSlice.reducer;
