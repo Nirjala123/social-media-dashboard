@@ -1,42 +1,99 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* App.css */
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Page layout */
+html, body {
+  height: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.header {
+  background-color: #2196F3; /* Blue */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.card {
-  padding: 2em;
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.read-the-docs {
-  color: #888;
+.post-list {
+  background-color: #f2f2f2; /* Greyish background */
+  padding: 20px;
+  flex: 1;
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.post-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-list li {
+  background: #ffffff; /* White */
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.create-post {
+  background-color: #ffffff; /* White */
+  padding: 20px;
+}
+
+/* Form styles */
+.form-group {
+  margin-bottom: 10px;
+}
+
+button.submit-btn, button.delete-btn, button.add-friend-btn, button.account-btn, button.edit-btn {
+  background-color: #4caf50; /* Green */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Dropdown menu */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff; /* White */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.account-dropdown:hover .dropdown-content {
+  display: block;
 }
